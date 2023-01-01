@@ -5,6 +5,9 @@ A queue that returns results in a multithreaded environment.
 from threading import Thread, active_count
 from time import sleep
 
+# Version of modernqueue package
+__version__ = "1.0.2"
+
 
 class ModernQueue:
     """

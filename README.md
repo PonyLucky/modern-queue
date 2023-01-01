@@ -1,8 +1,7 @@
 # ModernQueue
-A modern and permissive Python queue that returns results in a multithreaded environment.
+A modern and permissive Python queue in a multithreaded environment.
 
 ## Table of contents
-- [Features](#features)
 - [Installation](#installation)
   - [From PyPI](#from-pypi)
   - [From GitHub](#from-github)
@@ -17,6 +16,7 @@ A modern and permissive Python queue that returns results in a multithreaded env
   - [1)](#1)
   - [2)](#2)
   - [3)](#3)
+- [License](#license)
 
 ## Installation
 ### From PyPI
