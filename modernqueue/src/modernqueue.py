@@ -6,7 +6,7 @@ from threading import Thread, active_count
 from time import sleep
 
 # Version of modernqueue package
-__version__ = "1.0.2"
+__version__ = "1.0.3"
 
 
 class ModernQueue:
@@ -20,6 +20,9 @@ class ModernQueue:
         Args:
         - max_threads (int, optional): The maximum number of threads
         to run at once [-1 for no limit]. Default: -1
+
+        Raises:
+        - ValueError: If max_threads is 0
         """
         # If max_threads is 0, throw an error
         if max_threads == 0:
@@ -66,6 +69,9 @@ class ModernQueue:
         Args:
         - func (callable): The function to run.
         - args (dict|tuple): The arguments to pass to the function.
+
+        Raises:
+        - TypeError: If func is not callable or args is not a tuple or a dict.
         """
         # If the function is not callable, throw an error
         if not callable(func):
@@ -85,7 +91,18 @@ class ModernQueue:
         Args:
         - is_blocking (bool, optional): If True, the function will block until
         the queue is finished. Default: True
+
+        Raises:
+        - RuntimeError: If the queue is already running.
+        - ValueError: If the queue is empty.
         """
+        # Throw an error if running the queue while it's already running
+        if self.running() != 0:
+            raise RuntimeError("The queue is already running")
+        # Throw an error if the queue is empty
+        if not self.queue:
+            raise ValueError("The queue is empty")
+
         # While there are still functions in the queue
         while self.queue:
             if self.max_threads != -1:
@@ -108,6 +125,9 @@ class ModernQueue:
     def get_results(self, is_ordered: bool = True) -> list:
         """
         Get the results of the queue in order.
+
+        If True, the order of the results is the same as the order
+        of the functions added to the queue.
 
         If order don't matter, is_ordered can be set to False to improve
         performance.

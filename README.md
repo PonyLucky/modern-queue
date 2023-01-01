@@ -1,6 +1,8 @@
 # ModernQueue
 A modern and permissive Python queue in a multithreaded environment.
 
+Go to the [Wiki](https://github.com/PonyLucky/modern-queue/wiki) for more information.
+
 ## Table of contents
 - [Installation](#installation)
   - [From PyPI](#from-pypi)

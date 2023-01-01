@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="modernqueue",
-    version="1.0.2",
+    version="1.0.3",
     author="Margot Louis",
     description="A modern queue in a multithreaded environment",
     long_description=long_description,
